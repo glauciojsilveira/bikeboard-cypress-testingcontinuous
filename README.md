@@ -1,4 +1,5 @@
 # BikeBoard — Cypress Test Continuos Git Hub Action Guide by Glaucio 
+- Este projeto é um teste automatizado E2E em Cypress rodando em pipeline - Continuos Testing
 
 Este repositório contém um site estático em `src/` e testes E2E implementados com Cypress em `cypress/`.
 
