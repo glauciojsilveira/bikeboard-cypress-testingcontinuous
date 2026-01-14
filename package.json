@@ -1,0 +1,23 @@
+{
+  "name": "bike-board-web",
+  "version": "1.0.0",
+  "description": "Plataforma de Classificados para Compra e Venda de Bicicletas",
+  "main": "index.js",
+  "scripts": {
+    "start": "serve -s src",
+    "test": "cypress run"
+  },
+  "keywords": [
+    "cypress",
+    "reactjs",
+    "bike"
+  ],
+  "author": "Fernando Papito",
+  "license": "MIT",
+  "dependencies": {
+    "serve": "14.2.5"
+  },
+  "devDependencies": {
+    "cypress": "15.4.0"
+  }
+}
