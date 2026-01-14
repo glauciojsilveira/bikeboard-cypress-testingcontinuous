@@ -1,0 +1,30 @@
+# Node modules
+node_modules/
+
+# dotenv environment variables
+.env
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDEs
+.vscode/
+.idea/
+
+# Cypress artifacts (generated)
+cypress/videos/
+cypress/screenshots/
+
+# Build / dist
+dist/
+build/
+
+# lock files (optional)
+# package-lock.json
+# yarn.lock
