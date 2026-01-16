@@ -28,3 +28,10 @@ jobs:
           name: cypress-screenshots-chrome
           path: cypress/screenshots
 
+      - name: Upload videos
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: cypress-videos-chrome
+          path: cypress/videos
+

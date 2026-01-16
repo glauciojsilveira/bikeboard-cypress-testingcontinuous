@@ -127,3 +127,13 @@ Sugestão: adicione um script npm que rode tudo junto (ex.: `test:report`).
 - **Alteração**: Adicionado `afterEach(() => {cy.screenshot({capture: 'runner'})})` no arquivo `cypress/support/e2e.js`.
 - **Para que serve**: Após cada teste, um screenshot do "runner" (a interface do Cypress durante a execução) é capturado automaticamente. Isso ajuda a documentar o estado do teste em cada etapa, útil para debugging, relatórios e análise de comportamentos inesperados. A opção `capture: 'runner'` especifica que o screenshot deve incluir a interface do Cypress, não apenas a aplicação testada.
 
+### Configuração de Vídeos e Screenshots no Cypress
+- **Alteração**: No arquivo `cypress.config.js`, adicionado `screenshotOnRunFailure: false` e `video: true`.
+- **Para que serve**: 
+  - `screenshotOnRunFailure: false`: Desabilita a captura automática de screenshots em caso de falha de testes, evitando duplicação com os screenshots manuais configurados em `e2e.js`.
+  - `video: true`: Habilita a gravação automática de vídeos durante a execução dos testes E2E. Os vídeos capturam toda a sessão de teste, incluindo interações e falhas, servindo como evidências detalhadas para análise de comportamentos e debugging.
+
+### Upload de Vídeos no Workflow de CI/CD
+- **Alteração**: Adicionado um step "Upload videos" no arquivo `.github/workflows/e2e-tests.yml` para fazer upload dos vídeos como artefatos.
+- **Para que serve**: Permite salvar e acessar os vídeos gravados dos testes diretamente no GitHub Actions, facilitando a revisão de execuções de teste em pipelines de CI/CD. Isso é útil para investigar falhas ou comportamentos específicos sem precisar reproduzir localmente.
+
