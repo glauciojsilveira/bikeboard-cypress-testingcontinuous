@@ -1,6 +1,8 @@
 # BikeBoard — Cypress Test Continuos Git Hub Action Guide by Glaucio 
 - Este projeto é um teste automatizado E2E em Cypress rodando em pipeline - Continuos Testing
 - Os testes podem ser executados direto aqui no git hub action
+- É possivel escolher o ambiente de testes entre local e homolog
+- homolog - https://bikeboard-homolog.vercel.app
 
 Este repositório contém um site estático em `src/` e testes E2E implementados com Cypress em `cypress/`.
 
@@ -136,4 +138,8 @@ Sugestão: adicione um script npm que rode tudo junto (ex.: `test:report`).
 ### Upload de Vídeos no Workflow de CI/CD
 - **Alteração**: Adicionado um step "Upload videos" no arquivo `.github/workflows/e2e-tests.yml` para fazer upload dos vídeos como artefatos.
 - **Para que serve**: Permite salvar e acessar os vídeos gravados dos testes diretamente no GitHub Actions, facilitando a revisão de execuções de teste em pipelines de CI/CD. Isso é útil para investigar falhas ou comportamentos específicos sem precisar reproduzir localmente.
+
+### Configuração de Variável de Ambiente para Base URL
+- **Alteração**: No arquivo `cypress.config.js`, a `baseUrl` foi alterada de `'http://localhost:3000'` para `process.env.BASE_URL`. No `package.json`, o script `test` foi atualizado para usar `cross-env CYPRESS_BASE_URL=http://localhost:3000 cypress run --browser chrome`, e `cross-env` foi adicionado como dependência de desenvolvimento.
+- **Para que serve**: Permite configurar a URL base dos testes via variável de ambiente, tornando o projeto mais flexível para diferentes ambientes (desenvolvimento, staging, produção). O uso de `cross-env` garante compatibilidade entre sistemas operacionais (Windows, Linux, macOS) ao definir variáveis de ambiente. Além disso, especifica o navegador Chrome para execuções consistentes nos testes.
 
