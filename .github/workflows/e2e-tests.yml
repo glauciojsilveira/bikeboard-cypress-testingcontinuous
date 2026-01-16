@@ -1,7 +1,11 @@
 name: E2E Tests
 
 on:
-  workflow_dispatch: 
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+  workflow_dispatch:
 
 jobs:
   tests:
@@ -16,3 +20,11 @@ jobs:
         with:
           start: npm start
           browser: chrome
+
+      - name: Upload screenshots
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: cypress-screenshots-chrome
+          path: cypress/screenshots
+

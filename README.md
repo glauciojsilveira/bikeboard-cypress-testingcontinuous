@@ -1,5 +1,6 @@
 # BikeBoard — Cypress Test Continuos Git Hub Action Guide by Glaucio 
 - Este projeto é um teste automatizado E2E em Cypress rodando em pipeline - Continuos Testing
+- Os testes podem ser executados direto aqui no git hub action
 
 Este repositório contém um site estático em `src/` e testes E2E implementados com Cypress em `cypress/`.
 
@@ -107,4 +108,22 @@ Sugestão: adicione um script npm que rode tudo junto (ex.: `test:report`).
 - `cypress/support/mocks/ads.mocks.js` (mocks)
 - `cypress/support/actions/ads.actions.js` (comandos customizados)
 - `cypress/fixtures/bike.js` (dados de exemplo)
+
+## Últimas Alterações no Código
+
+### Configuração de Tamanho de Tela (Viewport)
+- **Alteração**: Adicionado `viewportWidth: 1920` e `viewportHeight: 1080` no arquivo `cypress.config.js`.
+- **Para que serve**: Define o tamanho padrão da viewport para os testes E2E, simulando uma resolução de tela de 1920x1080 pixels (Full HD). Isso garante que os testes sejam executados em uma resolução consistente, facilitando a reprodução de layouts e comportamentos específicos da interface.
+
+### Alterações no Workflow de CI/CD (e2e-tests.yml)
+- **Alteração**: O arquivo `.github/workflows/e2e-tests.yml` foi atualizado para:
+  - Incluir triggers automáticos em `push` e `pull_request` para as branches `main` e `master`.
+  - Adicionar um step para upload de screenshots como artefatos do GitHub Actions.
+- **Para que serve**: 
+  - Os triggers automáticos garantem que os testes E2E sejam executados sempre que houver mudanças no código principal ou em pull requests, assegurando integração contínua.
+  - O upload de screenshots permite analisar visualmente falhas nos testes diretamente no GitHub, facilitando o debugging e a manutenção.
+
+### Opções de Screenshot
+- **Alteração**: Adicionado `afterEach(() => {cy.screenshot({capture: 'runner'})})` no arquivo `cypress/support/e2e.js`.
+- **Para que serve**: Após cada teste, um screenshot do "runner" (a interface do Cypress durante a execução) é capturado automaticamente. Isso ajuda a documentar o estado do teste em cada etapa, útil para debugging, relatórios e análise de comportamentos inesperados. A opção `capture: 'runner'` especifica que o screenshot deve incluir a interface do Cypress, não apenas a aplicação testada.
 

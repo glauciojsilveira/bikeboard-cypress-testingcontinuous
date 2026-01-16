@@ -17,3 +17,5 @@
 import './commands'
 
 import './mocks/ads.mocks'
+
+afterEach(() => {cy.screenshot({capture: 'runner'})})
